@@ -6,7 +6,7 @@ pkgdesc="Bangla phonetic input engine for IBus using Google Input Tools"
 arch=('any')
 url="https://github.com/yourusername/bangla-google-ibus"
 license=('MIT')
-depends=('ibus' 'python' 'python-gobject' 'ibus-autostart')
+depends=('ibus' 'python' 'python-gobject')
 source=("git+https://github.com/shahratin/bangla-google-ibus.git")
 sha256sums=('SKIP')
 
@@ -30,6 +30,7 @@ post_install() {
     systemctl --user daemon-reload
     systemctl --user enable --now bangla-engine.service
     ibus restart
+    echo ">>> install ibus-autostart with yay -S ibus-autostart"
     echo ">>> Switch to 'Bangla (Google)' in ibus-setup under Input Method tab"
 }
 
