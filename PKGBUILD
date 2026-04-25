@@ -35,7 +35,10 @@ post_install() {
 }
 
 post_remove() {
-    systemctl --user disable --now bangla-engine.service
+    systemctl --user disable --now bangla-engine.service 2>/dev/null || true
     systemctl --user daemon-reload
-    ibus restart
+    ibus restart 2>/dev/null || true
+
+    # Force remove leftover directory
+    rm -rf /usr/lib/bangla-google-ibus
 }

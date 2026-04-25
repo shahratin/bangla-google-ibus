@@ -64,6 +64,16 @@ class BanglaEngine(IBus.Engine):
                 return False  # let space pass through normally
             return True
 
+        if keyval == IBus.KEY_Return:
+            if self._suggestions:
+                self._commit(self._suggestions[0])
+            elif self._buffer:
+                self.commit_text(IBus.Text.new_from_string(self._buffer))
+                self._clear()
+            else:
+                return False  # let space pass through normally
+            return True
+
         # Number keys 1-9 — pick suggestion by number
         if IBus.KEY_1 <= keyval <= IBus.KEY_9 and self._suggestions:
             index = keyval - IBus.KEY_1

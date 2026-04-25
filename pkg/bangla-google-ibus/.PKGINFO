@@ -6,9 +6,9 @@ xdata = pkgtype=pkg
 pkgver = 1.0.0-1
 pkgdesc = Bangla phonetic input engine for IBus using Google Input Tools
 url = https://github.com/yourusername/bangla-google-ibus
-builddate = 1777109342
+builddate = 1777113660
 packager = Unknown Packager
-size = 5255
+size = 5620
 arch = any
 license = MIT
 depend = ibus
