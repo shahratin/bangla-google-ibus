@@ -1,12 +1,13 @@
 # Maintainer: Mahmud <your@email.com>
-pkgname=bangla-google-ibus
+pkgname=ibus-engine-bangla-google
 pkgver=1.0.0
 pkgrel=1
 pkgdesc="Bangla phonetic input engine for IBus using Google Input Tools"
 arch=('any')
-url="https://github.com/yourusername/bangla-google-ibus"
-license=('MIT')
-depends=('ibus' 'python' 'python-gobject')
+url="https://github.com/shahratin/bangla-google-ibus"
+license=('GPL-3.0-only')
+depends=('libibus' 'python' 'python-gobject' 'glib2')
+makedepends=('git')
 source=("git+https://github.com/shahratin/bangla-google-ibus.git")
 sha256sums=('SKIP')
 
