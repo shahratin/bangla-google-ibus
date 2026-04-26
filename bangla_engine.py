@@ -39,6 +39,31 @@ class BanglaEngine(IBus.Engine):
         if state & IBus.ModifierType.RELEASE_MASK:
             return False
 
+        # Ignore Ctrl, Alt, Super (Windows key) combos
+        if state & (IBus.ModifierType.CONTROL_MASK |
+                 IBus.ModifierType.MOD1_MASK |    # Alt
+                 IBus.ModifierType.SUPER_MASK):   # Windows key
+         return False
+
+        # Ignore arrow keys, function keys, and other special keys
+        ignored_keys = {
+            IBus.KEY_Left, IBus.KEY_Right, IBus.KEY_Up, IBus.KEY_Down,
+            IBus.KEY_Home, IBus.KEY_End, IBus.KEY_Page_Up, IBus.KEY_Page_Down,
+            IBus.KEY_Insert, IBus.KEY_Delete,
+            IBus.KEY_Tab, IBus.KEY_Caps_Lock,
+            IBus.KEY_Shift_L, IBus.KEY_Shift_R,
+            IBus.KEY_Control_L, IBus.KEY_Control_R,
+            IBus.KEY_Alt_L, IBus.KEY_Alt_R,
+            IBus.KEY_Super_L, IBus.KEY_Super_R,
+            IBus.KEY_F1, IBus.KEY_F2, IBus.KEY_F3, IBus.KEY_F4,
+            IBus.KEY_F5, IBus.KEY_F6, IBus.KEY_F7, IBus.KEY_F8,
+            IBus.KEY_F9, IBus.KEY_F10, IBus.KEY_F11, IBus.KEY_F12,
+        }
+
+        if keyval in ignored_keys:
+             return False
+        
+
         # char = chr(keyval)
         char = chr(keyval) if keyval < 0x110000 else "" 
 
